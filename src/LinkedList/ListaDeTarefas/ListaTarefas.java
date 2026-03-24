@@ -113,7 +113,6 @@ public class ListaTarefas {
 
         return false;
     }
-
     public boolean alterarStatus(String titulo, boolean concluida) {
         Node atual = primeiro;
 
