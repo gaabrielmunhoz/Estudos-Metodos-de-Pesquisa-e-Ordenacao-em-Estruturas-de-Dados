@@ -1,4 +1,8 @@
 package LinkedList.ListaDeTarefas;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class ListaTarefas {
     private Node primeiro;
 
@@ -36,6 +40,22 @@ public class ListaTarefas {
             System.out.println("Data de vencimento: " + t.getDataVencimento());
             System.out.println("Concluída: " + t.getConcluida());
             atual = atual.getProximo();
+        }
+    }
+
+    public void salvarEmArquivo(){
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("tarefas.txt"))){
+            Node atual = primeiro;
+
+            while (atual != null){
+                Tarefa t = atual.getTarefa();
+
+                writer.write(t.getDescricaoTarefa() + ";" + t.getDataVencimento() + ";" + t.getConcluida());
+                writer.newLine();
+                atual = atual.getProximo();
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar arquivo: " + e.getMessage());
         }
     }
 
