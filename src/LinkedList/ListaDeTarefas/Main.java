@@ -27,7 +27,6 @@ public class Main {
         Tarefa tarefa = new Tarefa(titulo, data, concluido);
         lista.adicionar(tarefa);
         lista.listar();
-
-
+        scanner.close();
     }
 }

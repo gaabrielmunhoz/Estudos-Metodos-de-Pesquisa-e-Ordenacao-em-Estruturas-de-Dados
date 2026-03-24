@@ -2,6 +2,9 @@ package LinkedList.ListaDeTarefas;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
 
 public class ListaTarefas {
     private Node primeiro;
@@ -56,6 +59,33 @@ public class ListaTarefas {
             }
         } catch (IOException e) {
             System.out.println("Erro ao salvar arquivo: " + e.getMessage());
+        }
+    }
+
+    public void carregarDeArquivo(){
+        File arquivo = new File("Tarefas.txt");
+
+        try {
+            if (!arquivo.exists()) {
+                arquivo.createNewFile();
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(arquivo));
+            String linha;
+
+            while ((linha = reader.readLine()) != null) {
+                String[] partes = linha.split(";");
+                String descricao = partes[0];
+                String data = partes[1];
+                Boolean concluida = Boolean.parseBoolean(partes[2]);
+                Tarefa tarefa = new Tarefa(descricao,data,concluida);
+                adicionar(tarefa);
+            }
+
+            reader.close();
+        } catch (IOException e){
+            System.out.println("Erro ao carregar arquivo: " + e.getMessage());
         }
     }
 
