@@ -89,4 +89,29 @@ public class ListaTarefas {
         }
     }
 
+    public boolean removerPorTitulo(String titulo) {
+        if (primeiro == null) {
+            return false;
+        }
+
+        if (primeiro.getTarefa().getDescricaoTarefa().equalsIgnoreCase(titulo)){
+            primeiro = primeiro.getProximo();
+            return true;
+        }
+
+        Node anterior = primeiro;
+        Node atual = primeiro.getProximo();
+
+        while (atual != null) {
+            if (atual.getTarefa().getDescricaoTarefa().equalsIgnoreCase(titulo)){
+                anterior.setProximo(atual.getProximo());
+                return true;
+            }
+            anterior = atual;
+            atual = atual.getProximo();
+        }
+
+        return false;
+    }
+
 }
