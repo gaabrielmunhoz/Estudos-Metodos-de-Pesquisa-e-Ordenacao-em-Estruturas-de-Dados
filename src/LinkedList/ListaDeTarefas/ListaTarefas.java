@@ -114,4 +114,22 @@ public class ListaTarefas {
         return false;
     }
 
+    public boolean alterarStatus(String titulo, boolean concluida) {
+        Node atual = primeiro;
+
+        while (atual != null) {
+
+            Tarefa t = atual.getTarefa();
+
+            if (t.getDescricaoTarefa().equalsIgnoreCase(titulo)){
+                t.setConcluida(concluida);
+                return true;
+            }
+
+            atual = atual.getProximo();
+        }
+
+        return false;
+    }
+
 }

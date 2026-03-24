@@ -54,6 +54,24 @@ public class Main {
                     }
                     break;
 
+                case 4:
+                    System.out.print("Digite o título da tarefa: ");
+                    String tituloStatus = scanner.nextLine();
+
+                    System.out.print("Marcar como concluída? (s/n): ");
+                    String valorStatus = scanner.nextLine();
+
+                    boolean novoStatus = "s".equalsIgnoreCase(valorStatus);
+                    boolean alterada = lista.alterarStatus(tituloStatus, novoStatus);
+
+                    if (alterada) {
+                        System.out.println("Status alterado com sucesso!");
+                    } else {
+                        System.out.println("Tarefa não encontrada.");
+                    }
+
+                    break;
+
                 case 5:
                     System.out.println("Encerrando o programa...");
                     break;
