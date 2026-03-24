@@ -1,12 +1,12 @@
 package LinkedList.ListaDeTarefas;
 public class Node {
     private Tarefa tarefa;
-    private Node next;
+    private Node proximo;
 
     // construtor
-    public Node(Tarefa tarefa, Node next) {
+    public Node(Tarefa tarefa, Node proximo) {
         this.tarefa = tarefa;
-        this.next = next;
+        this.proximo = proximo;
     }
 
     // getter
@@ -14,12 +14,12 @@ public class Node {
         return tarefa;
     }
 
-    public Node getNext() {
-        return next;
+    public Node getProximo() {
+        return proximo;
     }
 
     // setter
-    public void setNext(Node next){
-        this.next = next;
+    public void setProximo(Node proximo){
+        this.proximo = proximo;
     }
 }
