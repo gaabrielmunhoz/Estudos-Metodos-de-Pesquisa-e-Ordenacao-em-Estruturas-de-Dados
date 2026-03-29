@@ -6,6 +6,7 @@ public class Livro {
     private String titulo;
     private String autor;
     private int anoPublicacao;
+    private boolean disponivel;
 
 
     // contrutores
@@ -13,6 +14,7 @@ public class Livro {
         this.titulo = titulo;
         this.autor = autor;
         this.anoPublicacao = anoPublicacao;
+        this.disponivel = true;
     }
 
     // métodos getters
@@ -26,5 +28,13 @@ public class Livro {
 
     public int getAnoPublicacao(){
         return anoPublicacao;
+    }
+
+    public String verificarDisponibilidade(){
+        if (disponivel){
+            return "Disponivel";
+        } else {
+            return "Indisponível";
+        }
     }
 }

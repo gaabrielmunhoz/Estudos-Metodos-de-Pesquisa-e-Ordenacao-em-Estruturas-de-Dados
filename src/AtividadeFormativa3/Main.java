@@ -20,8 +20,7 @@ public class Main {
         System.out.println("Lista de livros:");
         for (Livro infoLivro : livro) {
             System.out.println("\nTítulo: " + infoLivro.getTitulo());
-            System.out.println("Autor(a): " + infoLivro.getAutor());
-            System.out.println("Ano de publicação: " + infoLivro.getAnoPublicacao());
+            System.out.println(infoLivro.verificarDisponibilidade());
         }
     }
 }
