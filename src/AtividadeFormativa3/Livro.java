@@ -7,6 +7,7 @@ public class Livro {
     private String autor;
     private int anoPublicacao;
     private boolean disponivel;
+    private boolean alugar;
 
 
     // contrutores
@@ -15,6 +16,7 @@ public class Livro {
         this.autor = autor;
         this.anoPublicacao = anoPublicacao;
         this.disponivel = true;
+        this.alugar = true;
     }
 
     // métodos getters
@@ -37,4 +39,13 @@ public class Livro {
             return "Indisponível";
         }
     }
+
+    public String alugarLivro(){
+        if (disponivel == true){
+            return "Deseja alugar este livro? (s/n): ";
+        } else {
+            return null;
+        }
+    }
+
 }
