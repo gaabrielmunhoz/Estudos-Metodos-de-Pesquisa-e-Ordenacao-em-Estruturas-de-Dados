@@ -2,6 +2,7 @@ package FilasEPilhas;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,7 +48,7 @@ public class Main {
         System.out.println("e fila.pool() remove o primeiro elemento da fila: " + fila.poll());
         System.out.println("Agora a lista da fila está assim: " + fila);
 
-        System.out.println("\n\nExercício 4:\n");
+        System.out.println("\n\nExercício 4 - Filas (Queue)\n");
 
         System.out.println("Lista de livros disponíveis: ");
         for (Livro livros : biblioteca) {
@@ -78,6 +79,36 @@ public class Main {
             System.out.println(novaPosicao +"º: " + nome);
             novaPosicao++;
         }
+
+        System.out.println("\n\nExercício 5 - Pilhas (Stack)");
+        System.out.println("\nAntes de iniciar o exercício 5, vou revisar alguns conceitos sobre pilhas.");
+        System.out.println("Imagine uma pilha de pratos, o último a ser colocado na pilha\n" +
+                "é o primeiro que a gente vai pegar. - - - LIFO: Last In - Fist Out");
+
+        System.out.println("\n\nPrecisamos importar: java.util.Stack;");
+        System.out.println("\nE criar assim: \nStack<String> historico = new Stack<>();");
+
+        System.out.println("\n\nMétodos principais da pilha:");
+        System.out.println("push(): adiciona um item no topo da pilha.");
+        System.out.println("peek(): mostra o item que está no topo da pilha.");
+        System.out.println("pop(): remove o item que está no topo da pilha.\n\n");
+
+        System.out.println("Criando a pilha...\n");
+        Stack<String> historico = new Stack<>();
+        historico.push("Dom Casmurro");
+        historico.push("1984");
+        historico.push("Harry Potter");
+
+        System.out.println("Ordem adicionada:");
+        for (String pilha : historico) {
+            System.out.println(pilha);
+        }
+
+        System.out.println("Último adicionado (topo da pilha): " + historico.peek());
+        System.out.println("Removendo o livro que está no topo da pilha...");
+        String removido = historico.pop();
+        System.out.println("Livro removido: " + removido);
+        System.out.println("Livro que está no topo da pilha: " + historico.peek());
 
     }
 }
