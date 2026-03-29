@@ -1,6 +1,7 @@
 package FilasEPilhas;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,5 +24,30 @@ public class Main {
             System.out.println("\n\nTítulo: " + livros.getTitulo() + "\nAutor: " + livros.getAutor()
                     + "\nAnos de publicação: " + livros.getAno());
         }
+
+        System.out.println("\n\nOk, agora vamos começar os estudos da semana 3.\n\n ------ FILAS E PILHAS ------\n");
+        System.out.println("Precismos importar java.util.Queue e java.util.LinkedList\n\nA fila segue a seguinte estrutura:\nQueue<String> fila = new LinkedList<>();\n");
+
+        Queue<String> fila = new LinkedList<>();
+        fila.add("João");
+        fila.add("Maria");
+        fila.add("José");
+
+        System.out.println("Veja que fica em formato de lista e que joão é o primeiro da fila: \n" + fila);
+        // se rodar o código vai retornar [João, Maria, Jose]
+
+        System.out.println("\nVer quem é o próximo da fila sem remover: \n" + fila.peek());
+        System.out.println("\nRemover o primeiro da fila: \n" + fila.poll());
+        System.out.println("\nVeja como ficou a lista agora:\n" + fila);
+        System.out.println("\nAgora o próximo da fila é:\n" + fila.peek());
+
+        System.out.println("\nEntão fila.add() adiciona um elemento no final da fila. Vamos adicionar 'Elemento'.");
+        fila.add("Elemento");
+        System.out.println("fila.peek() mostra quem é o próximo da fila: " + fila.peek());
+        System.out.println("e fila.pool() remove o primeiro elemento da fila: " + fila.poll());
+        System.out.println("Agora a lista da fila está assim: " + fila);
+
+
+
     }
 }
