@@ -47,7 +47,37 @@ public class Main {
         System.out.println("e fila.pool() remove o primeiro elemento da fila: " + fila.poll());
         System.out.println("Agora a lista da fila está assim: " + fila);
 
+        System.out.println("\n\nExercício 4:\n");
 
+        System.out.println("Lista de livros disponíveis: ");
+        for (Livro livros : biblioteca) {
+            System.out.println("\n\nTítulo: " + livros.getTitulo() + "\nAutor: " + livros.getAutor()
+                    + "\nAnos de publicação: " + livros.getAno());
+        }
+
+        Queue<String> filaLivro = new LinkedList<>();
+        filaLivro.add("Gabriel");
+        filaLivro.add("Gisele");
+        filaLivro.add("Fernanda");
+
+        System.out.println("\n\nPosições da fila:");
+        int posicao = 1;
+        for (String nome : filaLivro) {
+            System.out.println(posicao +"º: " + nome);
+            posicao++;
+        }
+
+        System.out.println("\nPróximo da fila: "+filaLivro.peek());
+
+        String atendido = filaLivro.poll();
+        System.out.println("Livros entregues para: " + atendido);
+
+        System.out.println("\nPosições da fila:");
+        int novaPosicao = 1;
+        for (String nome : filaLivro) {
+            System.out.println(novaPosicao +"º: " + nome);
+            novaPosicao++;
+        }
 
     }
 }
