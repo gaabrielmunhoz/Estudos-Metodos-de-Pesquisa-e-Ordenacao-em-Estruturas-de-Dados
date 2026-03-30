@@ -76,6 +76,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        // para fazer o login, digite um dos cpfs da LinkedList de usuários
+
         boolean executandoLogin = true;
         while (executandoLogin) {
             System.out.println("- - - Login bíblioteca - - -");
@@ -91,7 +93,7 @@ public class Main {
             if (usuarioEncontrado != null){
                 System.out.println("\nBem vindo(a), " + usuarioEncontrado.getNome() + "!\n");
 
-                // menu de livros
+                // laço que mostra o menu do perfil
 
                 boolean menuPerfil = true;
                 while (menuPerfil) {
@@ -104,6 +106,8 @@ public class Main {
                         break;
 
                     } else if (selecionar.equals("1")){
+
+                        // laço para listar os livros que a bíblioteca possuí
                         boolean executando = true;
                         while (executando){
                             exibirMenuLivros(livros);
@@ -122,6 +126,8 @@ public class Main {
                                 if (indice >= 0 && indice < livros.size()){
                                     Livro selecionado = livros.get(indice);
                                     exibirDetalhesLivro(selecionado);
+
+                                    // salva a visualização no histórico
                                     Pilha historicoVisualizacao = new Pilha(usuarioEncontrado, selecionado, "Visualizado");
                                     historico.push(historicoVisualizacao);
 
@@ -147,6 +153,8 @@ public class Main {
                                         if (entrouNaFila.equals("n")){
                                             System.out.println("Não notificar. Voltando para a lista de livros da bíblioteca...");
                                         } else if (entrouNaFila.equals("s")){
+
+                                            // a pessoa entra na fila de espera e mostra a posição dela na fila par alugar o livro
                                             int posicao = filaEspera.size()+1;
                                             filaEspera.add(new Fila(usuarioEncontrado,posicao,selecionado));
                                             System.out.println("Você entrou na fila de espera para o livro \"" + selecionado.getTitulo() + "\" na posição " + posicao + ".");
@@ -161,6 +169,7 @@ public class Main {
                     } else if (selecionar.equals("2")){
                         System.out.println("\n- - - Histórico de visualização - - -\n");
 
+                        // laço for para mostrar o histórico de visualização do mais recente para o primeiro visualizado
                         boolean encontrouHistorico = false;
                         for (int i = historico.size() - 1; i >= 0; i--) {
                             Pilha item = historico.get(i);
