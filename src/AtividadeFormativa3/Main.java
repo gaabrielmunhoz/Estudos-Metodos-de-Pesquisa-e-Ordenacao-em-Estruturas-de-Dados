@@ -41,6 +41,7 @@ public class Main {
         System.out.println("- - - Selecione uma opção - - -");
         System.out.println("(1) Exibir lista de livros da bíblioteca");
         System.out.println("(2) Exibir histórico de visualização");
+        System.out.println("(3) Meus livros alugados");
         System.out.println("(0) Fazer Log-out");
     }
 
@@ -75,6 +76,10 @@ public class Main {
         // abrindo scanner para o usuário digitar no terminal
 
         Scanner scanner = new Scanner(System.in);
+
+        // fazendo uma linked list para mostrar os livros que o usuário alugou
+
+        LinkedList<LivrosAlugados> alugados = new LinkedList<>();
 
         // para fazer o login, digite um dos cpfs da LinkedList de usuários
 
@@ -138,6 +143,7 @@ public class Main {
                                         if (alugar.equalsIgnoreCase("s")){
                                             selecionado.alugarLivro();
                                             System.out.println("\nLivro \"" + selecionado.getTitulo() + "\" alugado com sucesso!\n");
+                                            alugados.add(new LivrosAlugados(usuarioEncontrado,selecionado,true));
 
                                         } else if (alugar.equalsIgnoreCase("n")){
                                             System.out.println("\nVoltando para a lista de livros da bíblioteca...\n");
@@ -181,6 +187,23 @@ public class Main {
                         if (!encontrouHistorico){
                             System.out.println("Não há visualizações recentes.\n");
                         }
+                    } else if (selecionar.equals("3")) {
+                        System.out.println("- - - Meus livros alugados - - -");
+
+                        boolean encontrou = false;
+
+                        for (LivrosAlugados item : alugados) {
+                            if (item.getUsuario().getCpf().equals(usuarioEncontrado.getCpf())
+                            && item.isAlugado()){
+                                System.out.println("Livro: " +item.getLivro().getTitulo());
+                                encontrou = true;
+                            }
+                        }
+
+                        if (!encontrou) {
+                            System.out.println("\nNão há livros alugados.\n");
+                        }
+
                     }
                 }
 
