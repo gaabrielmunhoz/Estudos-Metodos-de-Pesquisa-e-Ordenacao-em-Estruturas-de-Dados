@@ -40,11 +40,13 @@ public class Livro {
         }
     }
 
-    public String alugarLivro(){
-        if (disponivel == true){
-            return "Deseja alugar este livro? (s/n): ";
-        } else {
-            return null;
+    public boolean isDisponivel(){
+        return disponivel;
+    }
+
+    public void alugarLivro(){
+        if (disponivel){
+            disponivel = false;
         }
     }
 
