@@ -1,5 +1,4 @@
 package AtividadeFormativa3;
-import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -9,12 +8,13 @@ public class Main {
 
     //metodo para exibir o menu de livros
     public static void exibirMenuLivros(LinkedList<Livro>livros){
-        System.out.println("- - - Menu de livros - - -\n");
+        System.out.println("- - - Lista de livros - - -\n");
         int posicao = 1;
         for (Livro menuLivros : livros) {
             System.out.println("("+posicao+") "+ menuLivros.getTitulo());
             posicao++;
         }
+        System.out.println("(0) Digite 0 para sair da lista de livros");
     }
 
     // metodo para exibir os detalhes do livro que o usuário selecionar
@@ -39,9 +39,8 @@ public class Main {
 
     public static void exibirMenuPerfil() {
         System.out.println("- - - Selecione uma opção - - -");
-        System.out.println("(1) Exibir meus livros alugados");
-        System.out.println("(2) Exibir lista de livros da bíblioteca");
-        System.out.println("(3) Exibir posição nas filas de livros que desejo alugar");
+        System.out.println("(1) Exibir lista de livros da bíblioteca");
+        System.out.println("(2) Exibir histórico de visualização");
         System.out.println("(0) Fazer Log-out");
     }
 
@@ -65,9 +64,13 @@ public class Main {
         livros.add(new Livro("Dom Casmurro", "Machado de Assis", 1899));
         livros.add(new Livro("O Pequeno Príncipe", "Antoine de Saint-Exupéry", 1943));
 
-        // Criando fila
+        // Criando fila para aluguel de livros
 
         Queue<Fila> filaEspera = new LinkedList<>();
+
+        // Criando pilhas paravisualização de histórico do usuário
+
+        Stack<Pilha> historico = new Stack<>();
 
         // abrindo scanner para o usuário digitar no terminal
 
@@ -101,16 +104,10 @@ public class Main {
                         break;
 
                     } else if (selecionar.equals("1")){
-                        System.out.println("em construção...");
-
-                        System.out.println("- - - Livros alugados - - -");
-
-
-                    } else if (selecionar.equals("2")){
                         boolean executando = true;
                         while (executando){
                             exibirMenuLivros(livros);
-                            System.out.println("\nDigite o número do livro que você deseja (0 para voltar ao perfil): ");
+                            System.out.println("\nDigite o número do livro que você deseja: ");
                             if (!scanner.hasNextInt()){
                                 System.out.println("\nOpção inválida.\n");
                                 scanner.next();
@@ -125,6 +122,8 @@ public class Main {
                                 if (indice >= 0 && indice < livros.size()){
                                     Livro selecionado = livros.get(indice);
                                     exibirDetalhesLivro(selecionado);
+                                    Pilha historicoVisualizacao = new Pilha(usuarioEncontrado, selecionado, "Visualizado");
+                                    historico.push(historicoVisualizacao);
 
                                     if (selecionado.isDisponivel()) {
                                         System.out.println("Deseja alugar este livro? (s/n): ");
@@ -159,6 +158,20 @@ public class Main {
                                 }
                             }
                         }
+                    } else if (selecionar.equals("2")){
+                        System.out.println("\n- - - Histórico de visualização - - -\n");
+
+                        boolean encontrouHistorico = false;
+                        for (int i = historico.size() - 1; i >= 0; i--) {
+                            Pilha item = historico.get(i);
+
+                            if (item.getUsuario().getCpf().equals(usuarioEncontrado.getCpf())) {
+                                System.out.println(item.getHistorico() + " o livro: " + item.getLivro().getTitulo());
+                            }
+                        }
+                        if (!encontrouHistorico){
+                            System.out.println("Não há visualizações recentes.\n");
+                        }
                     }
                 }
 
@@ -167,10 +180,7 @@ public class Main {
             }
         }
 
-        //
-
-
-
+        scanner.close();
 
     }
 }
