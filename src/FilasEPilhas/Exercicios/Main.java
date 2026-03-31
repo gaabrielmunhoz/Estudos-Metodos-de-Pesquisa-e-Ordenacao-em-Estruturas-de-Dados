@@ -121,5 +121,34 @@ public class Main {
             System.out.println(filaInvertida.pop());
         }
 
+        System.out.println("\n\nExercício 6\n");
+
+        Queue<Integer> pares = new LinkedList<>();
+
+        pares.add(1);
+        pares.add(2);
+        pares.add(3);
+        pares.add(4);
+        pares.add(5);
+        pares.add(6);
+
+        System.out.println("Todos os números informados:");
+        for (int i : pares){
+            System.out.println(i);
+        }
+
+        System.out.println("\nNúmeros que são pares (sem remover da fila):");
+        int quantidadePares = 0;
+        for (int i : pares){
+            int par = i;
+
+            if (par % 2 == 0){
+                System.out.println(i);
+                quantidadePares++;
+            }
+        }
+        System.out.println("\nQuantos números são pares?\n" + quantidadePares);
+
+
     }
 }
