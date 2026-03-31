@@ -260,5 +260,26 @@ public class Main {
 
         System.out.println("\n\nExercício 8\n");
 
+        Queue<String> numeros = new LinkedList<>();
+        Queue<String> letras = new LinkedList<>();
+        Queue<String> intercalados = new LinkedList<>();
+
+        numeros.add("1");
+        numeros.add("2");
+        numeros.add("3");
+        letras.add("A");
+        letras.add("B");
+        letras.add("c");
+
+        while(!numeros.isEmpty() && !letras.isEmpty()){
+            String intercalarNumeros = numeros.poll();
+            String intercalarLetras = letras.poll();
+            intercalados.add(intercalarNumeros);
+            intercalados.add(intercalarLetras);
+        }
+
+        for (String i : intercalados){
+            System.out.println(i);
+        }
     }
 }
