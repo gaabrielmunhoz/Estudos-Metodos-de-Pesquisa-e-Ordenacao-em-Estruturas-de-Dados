@@ -202,5 +202,63 @@ public class Main {
             }
         }
 
+        System.out.println("\n\nRefazendo exercício 7\n");
+        Queue<Integer> filaNorm = new LinkedList<>();
+        Queue<Integer> filaPref = new LinkedList<>();
+
+        filaNorm.add(20);
+        filaNorm.add(21);
+        filaNorm.add(22);
+        filaNorm.add(23);
+        filaNorm.add(24);
+        filaNorm.add(25);
+        filaNorm.add(26);
+
+        filaPref.add(70);
+        filaPref.add(75);
+        filaPref.add(60);
+
+        System.out.println("Posições da fila normal:");
+
+        int posicaoNorm = 1;
+        for (int i : filaNorm){
+            System.out.println(posicaoNorm + "º: " + i);
+            posicaoNorm++;
+        }
+
+        System.out.println("\nPosições da fila preferencial:");
+
+        int posicoesPref = 1;
+        for (int i : filaPref) {
+            System.out.println(posicoesPref + "º: " + i);
+            posicoesPref++;
+        }
+
+        int contagem = 0;
+        while (!filaNorm.isEmpty() || !filaPref.isEmpty()){
+
+            if (!filaNorm.isEmpty() && contagem < 2) {
+                System.out.println("Atendendimento normal - idade: " + filaNorm.poll());
+                contagem++;
+            }
+
+            if (!filaPref.isEmpty() && contagem == 2) {
+                System.out.println("Atendimento prioritário - idade: " + filaPref.poll());
+                contagem = 0;
+            }
+
+            if (filaPref.isEmpty() && !filaNorm.isEmpty() && contagem == 2) {
+                contagem = 0;
+            }
+
+            if (filaNorm.isEmpty() && !filaPref.isEmpty()) {
+                System.out.println("Atendimento prioritário - idade: " + filaPref.poll());
+            }
+
+
+        }
+
+        System.out.println("\n\nExercício 8\n");
+
     }
 }
