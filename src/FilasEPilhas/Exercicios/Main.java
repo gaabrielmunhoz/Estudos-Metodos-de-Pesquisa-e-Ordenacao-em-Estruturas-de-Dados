@@ -149,6 +149,58 @@ public class Main {
         }
         System.out.println("\nQuantos números são pares?\n" + quantidadePares);
 
+        System.out.println("\n\nExercício 7\n");
+        Queue<Integer> filaNormal = new LinkedList<>();
+        Queue<Integer> filaPrioridade = new LinkedList<>();
+
+        filaNormal.add(20);
+        filaNormal.add(25);
+        filaNormal.add(59);
+        filaNormal.add(42);
+        filaNormal.add(31);
+        filaNormal.add(27);
+
+        filaPrioridade.add(60);
+        filaPrioridade.add(72);
+
+        System.out.println("Fila normal:");
+        int lugarNaFilaNormal = 1;
+        for (int i : filaNormal) {
+            System.out.println(lugarNaFilaNormal + "º: " + i);
+            lugarNaFilaNormal++;
+        }
+
+        int lugarNaFilaPreferencial = 1;
+
+
+        System.out.println("\nFila prioridade:");
+        for (int i : filaPrioridade) {
+            System.out.println(lugarNaFilaPreferencial + "º: " + i);
+            lugarNaFilaPreferencial++;
+        }
+
+        System.out.println("\nAndamento da fila:");
+        int contador = 0;
+        while (!filaNormal.isEmpty() || !filaPrioridade.isEmpty()){
+
+            if (!filaNormal.isEmpty() && contador < 2){
+                System.out.println("Atendendo pessoa com a idade de "+ filaNormal.poll() + " anos.");
+                contador++;
+            }
+
+            if (contador == 2 && !filaPrioridade.isEmpty()){
+                System.out.println("Atendendo pessoa com prioridade de idade de "+ filaPrioridade.poll() + " anos.");
+                contador = 0;
+            }
+
+            if (filaPrioridade.isEmpty() && !filaNormal.isEmpty() && contador == 2){
+                contador = 0;
+            }
+
+            if (filaNormal.isEmpty() && !filaPrioridade.isEmpty()){
+                System.out.println("Atendendo pessoa com prioridade de idade de "+ filaPrioridade.poll() + " anos.");
+            }
+        }
 
     }
 }
