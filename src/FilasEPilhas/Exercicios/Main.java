@@ -47,7 +47,7 @@ public class Main {
 
         }
 
-        System.out.println("\nExercício 3");
+        System.out.println("\n\nExercício 3");
 
         System.out.println("\nMostrar quem é o próximo da fila sem remover.");
         Queue<String> proximoFila = new LinkedList<>();
@@ -61,6 +61,42 @@ public class Main {
             posicoes++;
         }
         System.out.println("Próximo da fila: " + proximoFila.peek());
+
+        System.out.println("\n\nExercício 4\n");
+        Queue<String> removerEspecifico = new LinkedList<>();
+        removerEspecifico.add(new String("Gabriel"));
+        removerEspecifico.add(new String("Ana"));
+        removerEspecifico.add(new String("Pedro"));
+        removerEspecifico.add(new String("Ana"));
+        removerEspecifico.add(new String("Lucas"));
+
+        boolean executandoRemover = true;
+        while (executandoRemover) {
+            int posicoesRemover = 1;
+            System.out.println("- - - FILA - - -");
+            for (String k : removerEspecifico){
+                System.out.println(posicoesRemover + "º: " + k);
+                posicoesRemover++;
+            }
+
+            if (removerEspecifico.size()<5){
+                break;
+            } else {
+                boolean remover = true;
+                System.out.println("\nRemovendo todos os nomes \"Ana\" da fila.\n");
+                while (remover) {
+                    int quantidade = 1;
+                    remover = removerEspecifico.remove("Ana");
+                    quantidade++;
+                    if (!remover) {
+                        System.out.println("Quantidade encontrada: " + quantidade + "\n");
+                        break;
+                    }
+                }
+
+            }
+
+        }
 
     }
 }
