@@ -15,9 +15,38 @@ public class Main {
 
         int posicao = 1;
         for (String indice : nomes) {
-            System.out.println(posicao + "º: " + indice);
+            System.out.println(posicao + "º" + indice);
             posicao++;
         }
+
+        System.out.println("\n\nExercício 2");
+        Queue<String> atenderFila = new LinkedList<>();
+
+        atenderFila.add(new String("Gabriel"));
+        atenderFila.add(new String("Fernanda"));
+        atenderFila.add(new String("Gisele"));
+        atenderFila.add(new String("Maurício"));
+        atenderFila.add(new String("Anna"));
+
+        boolean executando = true;
+        while (executando) {
+            int posicaoFila = 1;
+            System.out.println("\n- - - Posições na fila - - -");
+            for (String i : atenderFila){
+                System.out.println(posicaoFila + "º" + i);
+                posicaoFila++;
+            }
+
+            System.out.println("\nAtendendo: " + atenderFila.poll());
+            System.out.println("Restam: " + atenderFila.size() + " pessoas.");
+
+            if (atenderFila.size() == 0){
+                System.out.println("\nTodos foram atendidos.");
+                break;
+            }
+
+        }
+
 
     }
 }
