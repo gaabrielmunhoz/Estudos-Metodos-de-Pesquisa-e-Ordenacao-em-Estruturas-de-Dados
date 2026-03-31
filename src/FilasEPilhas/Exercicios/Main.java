@@ -47,6 +47,20 @@ public class Main {
 
         }
 
+        System.out.println("\nExercício 3");
+
+        System.out.println("\nMostrar quem é o próximo da fila sem remover.");
+        Queue<String> proximoFila = new LinkedList<>();
+        proximoFila.add(new String("João"));
+        proximoFila.add(new String("Maria"));
+        proximoFila.add(new String("José"));
+
+        int posicoes = 1;
+        for (String j : proximoFila){
+            System.out.println(posicoes + "º: " + j);
+            posicoes++;
+        }
+        System.out.println("Próximo da fila: " + proximoFila.peek());
 
     }
 }
