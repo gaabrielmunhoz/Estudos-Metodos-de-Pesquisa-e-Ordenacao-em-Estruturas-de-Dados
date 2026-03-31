@@ -1,6 +1,7 @@
 package FilasEPilhas.Exercicios;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Main {
 
@@ -96,6 +97,28 @@ public class Main {
 
             }
 
+        }
+
+        System.out.println("\n\nExercício 5\n");
+
+        Queue<String> inverterFila = new LinkedList<>();
+        Stack<String> filaInvertida = new Stack<>();
+
+        inverterFila.add(new String("A"));
+        inverterFila.add(new String("B"));
+        inverterFila.add(new String("C"));
+        inverterFila.add(new String("D"));
+        inverterFila.add(new String("E"));
+
+        while (!inverterFila.isEmpty()){
+            String l = inverterFila.peek();
+            filaInvertida.push(l);
+            System.out.println(inverterFila.poll());
+        }
+
+        System.out.println("\nFila invertida (com Stack)");
+        while (!filaInvertida.isEmpty()){
+            System.out.println(filaInvertida.pop());
         }
 
     }
