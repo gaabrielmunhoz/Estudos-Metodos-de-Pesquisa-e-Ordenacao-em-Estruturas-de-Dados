@@ -22,11 +22,11 @@ class Grafo {
         rotas.add(new LinkedList<>());
     }
 
-    public void adicionarRotas(String origem, String destino){
+    public void criarRotas(String origem, String destino){
         int iOrigem = cidades.indexOf(origem);
         int iDestino = cidades.indexOf(destino);
 
-        if (iOrigem != -1 && iDestino != -1) {
+        if (iOrigem != -1 && iDestino != -1){
             rotas.get(iOrigem).add(destino);
         }
     }
@@ -41,20 +41,18 @@ class Grafo {
             System.out.println();
         }
     }
-
 }
 
 public class Main {
-
     public static void main(String[] args) {
         Grafo g = new Grafo();
 
         g.adicionarCidade("Brasília");
         g.adicionarCidade("São Paulo");
         g.adicionarCidade("Rio de Janeiro");
-        g.adicionarRotas("Brasília", "São Paulo");
-        g.adicionarRotas("São Paulo", "Rio de Janeiro");
-        g.adicionarRotas("Rio de Janeiro", "Brasília");
+        g.criarRotas("Brasília", "São Paulo");
+        g.criarRotas("São Paulo", "Rio de Janeiro");
+        g.criarRotas("Rio de Janeiro", "Brasília");
         g.imprimir();
     }
 }
