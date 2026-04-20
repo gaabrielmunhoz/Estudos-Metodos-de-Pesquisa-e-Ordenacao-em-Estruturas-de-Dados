@@ -40,4 +40,15 @@ public class ArvoreBinaria {
         }
 
     }
+
+    public void imprimirArvore(No no){
+        if (no == null) return;
+
+        String esq = (no.esquerda != null) ? String.valueOf(no.esquerda.numero) : "";
+        String dir = (no.direita != null) ? String.valueOf(no.direita.numero) : "";
+
+        System.out.println(esq + " <– " + no.numero + " –> " + dir);
+        imprimirArvore(no.esquerda);
+        imprimirArvore(no.direita);
+    }
 }
